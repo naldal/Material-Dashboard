@@ -1,4 +1,4 @@
-import { AppBar, Badge, fade, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Badge, CssBaseline, fade, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import clsx from "clsx";
@@ -14,26 +14,20 @@ let drawerWidth = 260;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    flexGrow: 1
+
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     [theme.breakpoints.down('sm')]:{
       width: '100%'
     },
+    
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
   },
-  // appBarShift: {
-  //   
-  //   marginLeft: drawerWidth,
-  //   transition: theme.transitions.create(["margin", "width"], {
-  //     easing: theme.transitions.easing.easeOut,
-  //     duration: theme.transitions.duration.enteringScreen
-  //   })
-  // },
+
    search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -84,9 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    [theme.breakpoints.down('sm')]:{
-     width:0, 
-    },
+
   },
   drawerHeader: {
     display: "flex",
@@ -125,68 +117,27 @@ const AppHeader = () => {
       setOpen(true);
     };
 
-    
-
-    const menuId = 'primary-search-account-menu';
-
   return (
     <div className={classes.root}>
+      <CssBaseline />
       <AppBar
         position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
+        color="secondary"
+        className={classes.appBar}
       >
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
-            // open && classes.hide
+            color="inherit"
+            aria-label="open drawer"
           >
             <MenuIcon />
           </IconButton>
 
-          {/* <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography> */}
-          
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <EmailIcon />
-            </Badge>
-          </IconButton>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
-            <Badge badgeContent={17} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton
-            edge="end"
-            aria-label="account of current user"
-            aria-controls={menuId}
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-
+          <Typography className={classes.title} variant="h6" noWrap>
+            Material-UI
+          </Typography>
           
         </Toolbar>
       </AppBar>

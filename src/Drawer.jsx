@@ -45,7 +45,7 @@ const StyledBadge = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
     drawer: {
         width: drawerWidth,
-        
+
         flexShrink: 0,
         flexDirection: "column",
     },
@@ -142,7 +142,7 @@ const Drawer = (props) => {
     };
     
     return (
-        <MUIDrawer BackdropProps={{ invisible: true }} anchor="left" open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
+        <MUIDrawer BackdropProps={{ open: false }} anchor="left" open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
             <div id="header" className={classes.logo}>
                 <FlareIcon style={{color:"#2196f3"}}/>
                 <Typography variant="h6">&nbsp;Material App&nbsp;&nbsp;</Typography>
