@@ -1,12 +1,11 @@
 import React from 'react';
-import {Drawer as MUIDrawer,Chip,List,ListItem,ListItemIcon,ListItemText,Collapse, ListSubheader, Typography, Avatar, Badge } from '@material-ui/core';
+import {Drawer as MUIDrawer, Chip,List,ListItem,ListItemIcon,ListItemText,Collapse, ListSubheader, Typography, Avatar, Badge } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles' 
 import PersonIcon from '@material-ui/icons/Person';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import WorkIcon from '@material-ui/icons/Work';
 import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-import WbIncandescentSharpIcon from '@material-ui/icons/WbIncandescentSharp';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ReceiptIcon from '@material-ui/icons/Receipt';
@@ -46,6 +45,7 @@ const StyledBadge = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
     drawer: {
         width: drawerWidth,
+        flexShrink: 0,
         flexDirection: "column",
     },
     drawerPaper: {
@@ -110,8 +110,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Drawer = () => {
-
+const Drawer = (props) => {
+    const { mobileOpen } = props;
+    console.log(mobileOpen)
     const classes = useStyles();
 
     const [open1, setOpen1] = React.useState(false);
@@ -137,14 +138,15 @@ const Drawer = () => {
     };
     
     return (
-        <MUIDrawer variant="permanent" className={classes.drawer} classes={{paper:classes.drawerPaper}}>
+        <MUIDrawer BackdropProps={{ invisible: true }} anchor="left" open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
             <div id="header" className={classes.logo}>
                 <FlareIcon style={{color:"#2196f3"}}/>
                 <Typography variant="h6">&nbsp;Material App&nbsp;&nbsp;</Typography>
                 <Chip label="Pro" color="secondary" size="small"/>
             </div>
-            <List className={classes.perList} 
-            subheader={
+            <List 
+              className={classes.perList} 
+              subheader={
                 <ListSubheader component="div" id="nested-list-subheader" style={{color:"#eee", fontSize:"0.9rem"}}>
                 Pages
                 </ListSubheader>
