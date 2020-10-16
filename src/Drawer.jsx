@@ -45,11 +45,15 @@ const StyledBadge = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
     drawer: {
         width: drawerWidth,
+        
         flexShrink: 0,
         flexDirection: "column",
     },
     drawerPaper: {
         width: drawerWidth,
+        [theme.breakpoints.down("sm")]: {
+            width: "0px"
+        },
         backgroundColor: "#1c2530",
         color: "#eee",
         borderRight: "0"

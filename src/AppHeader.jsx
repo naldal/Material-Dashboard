@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
+    [theme.breakpoints.down('sm')]:{
+      width: '100%'
+    },
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -80,7 +83,10 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    [theme.breakpoints.down('sm')]:{
+     width:0, 
+    },
   },
   drawerHeader: {
     display: "flex",
@@ -115,7 +121,7 @@ const AppHeader = () => {
     const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
-      drawerWidth= 260;
+      // drawerWidth= 260;
       setOpen(true);
     };
 
@@ -162,29 +168,29 @@ const AppHeader = () => {
           </div>
 
           <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <EmailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
+            <Badge badgeContent={4} color="secondary">
+              <EmailIcon />
+            </Badge>
+          </IconButton>
+          <IconButton aria-label="show 17 new notifications" color="inherit">
+            <Badge badgeContent={17} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton
+            edge="end"
+            aria-label="account of current user"
+            aria-controls={menuId}
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
           </IconButton>
 
           
         </Toolbar>
       </AppBar>
-      <Drawer mobileOpen={open}/> 
+      <Drawer mobileOpen={open} /> 
     </div>
   );
 }
