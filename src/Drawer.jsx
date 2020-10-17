@@ -155,7 +155,7 @@ const Drawer = (props) => {
     };
     
     return (
-        <MUIDrawer BackdropProps={{ open: false }} anchor="left" style={{zIndex: "0"}} open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
+        <MUIDrawer BackdropProps={{ open: false }} elevation={0} anchor="left" style={{zIndex: "0"}} open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
             <div id="header" className={classes.logo}>
                 <FlareIcon style={{color:"#2196f3"}}/>
                 <Typography variant="h6">&nbsp;Material App&nbsp;&nbsp;</Typography>

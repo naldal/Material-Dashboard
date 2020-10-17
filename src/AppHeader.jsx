@@ -7,20 +7,14 @@ import {
     makeStyles,
     Menu,
     MenuItem,
-    Toolbar,
-    Typography
+    Toolbar
 } from '@material-ui/core';
 
-import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
-import clsx from "clsx";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Drawer from './Drawer'
-import {AccountCircle} from '@material-ui/icons';
-import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/More';
-import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
@@ -257,6 +251,7 @@ const AppHeader = () => {
         <div className={classes.root}>
             <CssBaseline/>
             <AppBar
+                elevation={0}
                 position="fixed"
                 className={classes.appBar}
             >
