@@ -45,40 +45,47 @@ const StyledBadge = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
     drawer: {
         width: drawerWidth,
-
         flexShrink: 0,
-        flexDirection: "column",
+        flexDirection: "column"
     },
+
     drawerPaper: {
         width: drawerWidth,
         [theme.breakpoints.down("sm")]: {
-            width: "0px"
+            width: "0px",
         },
         backgroundColor: "#1c2530",
         color: "#eee",
-        borderRight: "0"
+        borderRight: "0",
     },
+
     listItems: {
         fontSize: "0.8rem",
     },
+
     listIcons: {
         color: "#999",
         fontSize: "1.3rem"
     },
+
     nested: {
         paddingLeft: theme.spacing(4),
     },
+
     listItemText: {
         fontSize: "0.91rem",
         marginLeft: "-17px"
     },
+
     perList:{
         padding: "0.6rem",
         margin: "0",
     },
+
     childLists: {
   
     },
+
     logo: {
         height: "64px",
         backgroundColor:"#232f3e;",
@@ -86,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "center",
     },
+
     footer: {
         position:"absolute",
         bottom: "0",
@@ -93,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor:"#232f3e;",
         width: "100%",
     },
+
     bottomflex: {
         height:"64px",
         display: "flex",
@@ -101,11 +110,13 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignSelf: "center"
     },
+
     badgeposition: {
         position:"absolute",
         left:"6%",
         top: "10px"
     },
+
     flextypo: {
         marginLeft: "-11px",
         marginTop: "6px",
@@ -116,7 +127,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Drawer = (props) => {
     const { mobileOpen } = props;
-    console.log(mobileOpen)
+    console.log(mobileOpen);
+
+    // console.log(mobileOpen)
     const classes = useStyles();
 
     const [open1, setOpen1] = React.useState(false);
@@ -142,7 +155,7 @@ const Drawer = (props) => {
     };
     
     return (
-        <MUIDrawer BackdropProps={{ open: false }} anchor="left" open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
+        <MUIDrawer BackdropProps={{ open: false }} anchor="left" style={{zIndex: "0"}} open={mobileOpen} className={classes.drawer} classes={{paper:classes.drawerPaper}}>
             <div id="header" className={classes.logo}>
                 <FlareIcon style={{color:"#2196f3"}}/>
                 <Typography variant="h6">&nbsp;Material App&nbsp;&nbsp;</Typography>
@@ -268,7 +281,7 @@ const Drawer = (props) => {
                         horizontal: 'right',
                         }}
                         variant="dot"
-                        classes={{root:classes.badgeposition}}
+                        className={classes.badgeposition}
                     >
                         <Avatar alt="Remy Sharp" src="https://material-app.bootlab.io/static/img/avatars/avatar-1.jpg" style={{margin:"2px"}} />
                     </StyledBadge>
@@ -283,4 +296,4 @@ const Drawer = (props) => {
     );
 };
 
-export default Drawer;
+export default React.memo(Drawer);
