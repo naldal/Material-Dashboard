@@ -1,4 +1,4 @@
-import { AppBar, Badge, CssBaseline, fade, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Badge, CssBaseline, fade, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import clsx from "clsx";
@@ -6,12 +6,34 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Drawer from './Drawer'
 import { AccountCircle } from '@material-ui/icons';
+import MailIcon from '@material-ui/icons/Mail';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 let drawerWidth = 260;
 
 const useStyles = makeStyles((theme) => ({
+    grow: { 
+        flexGrow: 1
+    },
+
+    sectionDesktop: {
+        display: "none",
+        [theme.breakpoints.up('md')]:{
+            display: "flex",
+            justifyContent: "flex-end"
+        }
+    },
+
+    sectionMobile: {
+        display: "flex",
+        [theme.breakpoints.up('md')]:{
+            display: "none"
+        }
+    },
+
+
+
   root: {
     display: "flex",
 
@@ -111,18 +133,23 @@ const AppHeader = () => {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
+    const handleProfileMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
     const handleDrawerOpen = () => {
       // drawerWidth= 260;
       setOpen(true);
     };
+
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
-        color="secondary"
+        color="#fff"
         className={classes.appBar}
       >
         <Toolbar>
@@ -138,6 +165,33 @@ const AppHeader = () => {
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
           </Typography>
+
+        <div className={classes.sectionDesktop}>
+        <div className={classes.grow} />
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+            //   aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          
+        </div>
           
         </Toolbar>
       </AppBar>
