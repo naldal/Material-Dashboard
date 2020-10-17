@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#000000",
         backgroundColor: fade(theme.palette.common.white, 0.25),
         '&:hover': {
-            backgroundColor: fade(theme.palette.common.black, 0.55),
+            backgroundColor: fade(theme.palette.common.black, 0.1),
         },
         // marginRight: theme.spacing(2),
         marginLeft: 0,
