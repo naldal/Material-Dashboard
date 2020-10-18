@@ -327,7 +327,6 @@ const AppHeader = () => {
             {renderMenu}
 
             <Drawer mobileOpen={open}/>
-
         </div>
     );
 }
