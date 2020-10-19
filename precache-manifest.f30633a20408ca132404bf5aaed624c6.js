@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8f43d8ba284053385032dae4473e9ab6",
+    "revision": "7aee7282689f081214c3369abd99ec67",
     "url": "/Material-Dashboard/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Material-Dashboard/static/js/2.14d3fb76.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7c2f8ac32bccf9003d38",
-    "url": "/Material-Dashboard/static/js/main.a1062a1c.chunk.js"
+    "revision": "25629ffe3cf610e9b02d",
+    "url": "/Material-Dashboard/static/js/main.b7948d6e.chunk.js"
   },
   {
     "revision": "e25c4d00b27bc6d9c496",
