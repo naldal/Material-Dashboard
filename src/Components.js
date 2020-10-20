@@ -60,7 +60,6 @@ function Components() {
             </Grid>
             <Divider className={classes.divideStyle} />
 
-
             <HashRouter>
                 <Switch>
                     <Route exact path="/" component={Default} />
