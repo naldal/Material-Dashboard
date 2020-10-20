@@ -138,22 +138,6 @@ const useStyles = makeStyles((theme) => ({
         }
     },
 
-    // content: {
-    //   flexGrow: 1,
-    //   padding: theme.spacing(3),
-    //   transition: theme.transitions.create("margin", {
-    //     easing: theme.transitions.easing.sharp,
-    //     duration: theme.transitions.duration.leavingScreen
-    //   }),
-    //   marginLeft: -drawerWidth
-    // },
-    // contentShift: {
-    //   transition: theme.transitions.create("margin", {
-    //     easing: theme.transitions.easing.easeOut,
-    //     duration: theme.transitions.duration.enteringScreen
-    //   }),
-    //   marginLeft: 0
-    // }
 }));
 
 
@@ -256,17 +240,6 @@ const AppHeader = () => {
                 className={classes.appBar}
             >
                 <Toolbar>
-                    {/*<div className={classes.sectionMenuMobile}>
-                        <IconButton
-                            edge="start"
-                            className={clsx(classes.menuButton)}
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={handleDrawerOpen}
-                        >
-                            <MenuIcon/>
-                        </IconButton>
-                    </div>*/}
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon/>
@@ -300,7 +273,6 @@ const AppHeader = () => {
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
-                            //   aria-controls={menuId}
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
                             color="#eeeeee"
@@ -312,7 +284,6 @@ const AppHeader = () => {
                     <div className={classes.sectionMobile}>
                         <IconButton
                             aria-label="show more"
-                            // aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
                             color="#eeeeee"
