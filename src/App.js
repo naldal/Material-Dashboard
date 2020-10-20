@@ -5,6 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import Default from './Default';
 import Drawer from './Drawer.jsx';
+import Paper from "@material-ui/core/Paper";
+import RouterTest from "./RouterTest";
 
 const useStyle = makeStyles({
     container: {
@@ -18,11 +20,12 @@ function App() {
 
     return (
         <div className={classes.container}>
-            
             <AppHeader />
             <Switch>
-                <Route exact path="/" render={(props) => <Default {...props}/>}></Route>
-                <Route></Route>
+                <Paper>
+                    <Route exact path="/" render={(props) => <Default {...props}/>}></Route>
+                    <Route exact path="/test" render={(props) => <RouterTest {...props}/>}></Route>
+                </Paper>
             </Switch>
         </div>
     );
