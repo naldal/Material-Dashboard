@@ -159,7 +159,7 @@ const Drawer = (props) => {
             <div id="header" className={classes.logo}>
                 <FlareIcon style={{color:"#2196f3"}}/>
                 <Typography variant="h6">&nbsp;Material App&nbsp;&nbsp;</Typography>
-                <Chip label="Pro" color="secondary" size="small"/>
+                <Chip label="Pro" color="secondary" style={{height:'25px'}}/>
             </div>
             <List 
               className={classes.perList} 

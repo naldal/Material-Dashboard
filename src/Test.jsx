@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Test = (props) => {
+const Test = (props, styling) => {
+    console.log(props)
+    console.log(styling)
+
     return (
-        <div style={{position:"absolute", top:"64px", left:"260px"}}>
+        <div>
             bbbkbkbkbkbkkbkbkbkbkkbkbk
         </div>
     );
