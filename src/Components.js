@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme)=>({
         background: '#f9f9fc',
         padding: '40px',
         [theme.breakpoints.down('sm')]:{
-            left: "0px"
+            left: "0px",
+            width: "100%"
         },
     },
     divideStyle: {
