@@ -201,7 +201,7 @@ const AppHeader = () => {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="#eeeeee">
+                <IconButton aria-label="show 4 new mails">
                     <Badge badgeContent={4} color="secondary">
                         <ChatBubbleOutlineIcon />
                     </Badge>
@@ -209,7 +209,7 @@ const AppHeader = () => {
                 <p>Messages</p>
             </MenuItem>
             <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="#eeeeee">
+                <IconButton aria-label="show 11 new notifications" >
                     <Badge badgeContent={11} color="secondary">
                         <NotificationsIcon />
                     </Badge>
@@ -221,7 +221,6 @@ const AppHeader = () => {
                     aria-label="account of current user"
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
-                    color="#eeeeee"
                 >
                     <PowerSettingsNewIcon />
                 </IconButton>
@@ -258,13 +257,13 @@ const AppHeader = () => {
 
                     <div className={classes.sectionDesktop}>
                         <div className={classes.grow}/>
-                        <IconButton aria-label="show 4 new mails" color="#eeeeee">
+                        <IconButton aria-label="show 4 new mails">
                             <Badge badgeContent={4} color="secondary">
                                 <ChatBubbleOutlineIcon/>
                             </Badge>
                         </IconButton>
 
-                        <IconButton aria-label="show 17 new notifications" color="#eeeeee">
+                        <IconButton aria-label="show 17 new notifications">
                             <Badge badgeContent={17} color="secondary">
                                 <NotificationsIcon/>
                             </Badge>
@@ -275,7 +274,7 @@ const AppHeader = () => {
                             aria-label="account of current user"
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
-                            color="#eeeeee"
+
                         >
                             <PowerSettingsNewIcon/>
                         </IconButton>
@@ -286,7 +285,7 @@ const AppHeader = () => {
                             aria-label="show more"
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
-                            color="#eeeeee"
+
                         >
                             <MoreIcon />
                         </IconButton>

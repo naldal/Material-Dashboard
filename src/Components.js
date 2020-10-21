@@ -4,13 +4,11 @@ import {Switch, Route, HashRouter} from 'react-router-dom';
 import Default from "./Default";
 import Test from "./Test";
 import {makeStyles} from "@material-ui/core/styles";
-import {Navigation} from "@material-ui/icons";
 import {Divider, Grid, IconButton} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SyncIcon from '@material-ui/icons/Sync';
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
 
 const drawerWidth = 260
 const useStyles = makeStyles((theme)=>({
@@ -53,7 +51,7 @@ function Components() {
                         <FilterListIcon />
                     </IconButton>
                     <Button size="small" variant="contained" color="secondary" disableElevation={true} style={{marginLeft:"13px"}}>
-                        <Typography variant="button" color="white">
+                        <Typography variant="button">
                             Today: April 11
                         </Typography>
                     </Button>

@@ -127,9 +127,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Drawer = (props) => {
     const { mobileOpen } = props;
-    console.log(mobileOpen);
-
-    // console.log(mobileOpen)
     const classes = useStyles();
 
     const [open1, setOpen1] = React.useState(false);

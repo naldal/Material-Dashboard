@@ -1,0 +1,34 @@
+[
+    {
+      "id": "1",
+      "title": "Sales Today",
+      "chip": "Today",
+      "content": "2.532",
+      "percent": "+26%",
+      "since": "Since last week"
+    },
+    {
+      "id": "2",
+      "title": "Visitors",
+      "chip": "Annual",
+      "content": "170.212",
+      "percent": "-14%",
+      "since": "Since last week"
+    },
+    {
+      "id": "3",
+      "title": "Total Earnings",
+      "chip": "Monthly",
+      "content": "$ 24.300",
+      "percent": "+18%",
+      "since": "Since last week"
+    },
+    {
+      "id": "4",
+      "title": "Pending Orders",
+      "chip": "Yearly",
+      "content": "45",
+      "percent": "-9%",
+      "since": "Since last week"
+    }
+]
