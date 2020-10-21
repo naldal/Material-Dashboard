@@ -10,10 +10,10 @@ import Chip from "@material-ui/core/Chip";
 
 const useStyle = makeStyles((theme) => ({
     root: {
-        margin: "8px"
+        margin: "8px",
     },
     gridContainer: {
-        marginTop: "15px"
+        marginTop: "15px",
     },
     typoInCard: {
         fontWeight: "600",
@@ -32,6 +32,10 @@ const useStyle = makeStyles((theme) => ({
     spanInCardDanger: {
         fontWeight: "600",
         color: theme.palette.error.main
+    },
+    cardContent: {
+
+
     }
 }))
 
@@ -43,8 +47,8 @@ const Default = () => {
 
     const getSaleData = defaultData.map((data) => (
         <Grid item md={3} sm={6} xs={12}>
-            <Card className={classes.root} elevation={1}>
-                <CardContent>
+            <Card className={classes.root} elevation={0}>
+                <CardContent style={{paddingBottom: "14px"}}>
                     <Grid container justify="space-between" alignItems="center">
                         <Grid>
                             <Typography variant="body1">
@@ -79,7 +83,7 @@ const Default = () => {
 
     return (
         <div>
-            <Grid container spacing={4} className={classes.gridContainer}>
+            <Grid container spacing={2} className={classes.gridContainer}>
                 {getSaleData}
             </Grid>
         </div>
