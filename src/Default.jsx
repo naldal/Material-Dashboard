@@ -1,28 +1,32 @@
 import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import DefaultData from './DefaultData.json';
-import {CardHeader, Grid} from "@material-ui/core";
+import {CardHeader, Grid, Paper, TableCell} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Line } from 'react-chartjs-2';
+import { Line, Doughnut, Pie } from 'react-chartjs-2';
+import TableContainer from "@material-ui/core/TableContainer";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableBody from "@material-ui/core/TableBody";
+
 
 const doubleLineState = (canvas) => {
     const ctx = canvas.getContext("2d");
-    const gradient = ctx.createLinearGradient(0, 0 , 300 ,0);
-    gradient.addColorStop(0, '#20f08b');
-    gradient.addColorStop(0.5, '#20f08b');
-    gradient.addColorStop(1, '#07dfb1');
+    const gradient = ctx.createLinearGradient(0, 200, 0 ,0);
+    gradient.addColorStop(0, '#ffffff');
+    gradient.addColorStop(1, 'rgba(200, 214, 229,0.1)');
 
     return {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
             {
                 fill: true,
-
                 lineTension: 0.5,
                 gradientFill: 'rgb(10,12,122)',
                 backgroundColor: gradient,
@@ -46,8 +50,40 @@ const doubleLineState = (canvas) => {
     }
 }
 
+const doughnutState = (canvas) => {
+    const ctx = canvas.getContext('2d');
+
+    return {
+        labels: ['Social', 'Search Engines', 'Direct', 'Other'],
+        datasets: [
+            {
+                data: [260, 125, 54, 146],
+                fill: true,
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56",
+                    '#dddddd'
+                ],
+                borderWidth: 3,
+            }
+        ],
+    }
+}
+
+const createData = (subject, revenue, value) => {
+    return {subject, revenue, value}
+}
+const tableRows = [
+    createData('Social', 260, "+35%"),
+    createData('Search Engines', 125, "-12%"),
+    createData('Direct', 54, "+46%"),
+    createData('Other', 146, "+35%")
+]
+
 const canvas = document.createElement('canvas');
 const doubleLinearData = doubleLineState(canvas);
+const doughnutData = doughnutState(canvas)
 
 const doubleLineOptions = {
     title: {
@@ -59,7 +95,7 @@ const doubleLineOptions = {
     scales: {
         xAxes: [{
             gridLines: {
-                display: false
+                display: false,
             }
         }],
         yAxes: [{
@@ -68,6 +104,17 @@ const doubleLineOptions = {
             }
         }]
     }
+}
+
+const doughnutOptions = {
+    title: {
+        display: false
+    },
+    responsive: true,
+    legend: {
+        display: false
+    },
+    cutoutPercentage: 85
 }
 
 const useStyle = makeStyles((theme) => ({
@@ -97,7 +144,17 @@ const useStyle = makeStyles((theme) => ({
     },
     chartCard: {
         margin: "0.5rem",
-
+    },
+    centerDoughnutText: {
+        position: "absolute",
+        padding: "inherit",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+    },
+    table: {
+        // minWidth: 650
+        marginTop: "10px",
     }
 }))
 
@@ -158,7 +215,7 @@ const Default = () => {
                         }/>
                         <CardContent>
                             <div>
-                                <Line data={doubleLinearData} options={doubleLineOptions}/>
+                                <Line data={doubleLinearData} options={doubleLineOptions} height={110}/>
                             </div>
                         </CardContent>
                     </Card>
@@ -171,6 +228,35 @@ const Default = () => {
                             </IconButton>
                         }/>
                         <CardContent>
+                            <div style={{position:"relative"}}>
+                                <Doughnut data={doughnutData} options={doughnutOptions} height={102}/>
+                                <div className={classes.centerDoughnutText}>
+                                    <Typography variant={"h6"}>+27%</Typography>
+                                    <Typography variant={"caption"}>more sales</Typography>
+                                </div>
+                            </div>
+                            <TableContainer component={Paper} elevation={0} className={classes.table}>
+                                <Table size={"small"}>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell style={{padding:"8px", fontWeight:"600"}}>Source</TableCell>
+                                            <TableCell align={"right"} style={{padding:"8px", fontWeight:"600"}}>Revenue</TableCell>
+                                            <TableCell align={"right"} style={{padding:"8px", fontWeight:"600"}}>Value</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {tableRows.map((row)=>(
+                                            <TableRow key={row.subject}>
+                                                <TableCell component="th" scope="row" style={{padding:"8px"}}>
+                                                    {row.subject}
+                                                </TableCell>
+                                                <TableCell align={"right"} style={{padding:"8px"}}>{row.revenue}</TableCell>
+                                                <TableCell align={"right"} style={{padding:"8px"}}>{row.value}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
 
                         </CardContent>
                     </Card>
