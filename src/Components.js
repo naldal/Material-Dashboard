@@ -14,8 +14,9 @@ const drawerWidth = 260
 const useStyles = makeStyles((theme)=>({
     root: {
         flexGrow: 1,
+        overflow: "auto",
         position: 'absolute',
-        top: '64px',
+        top: '73px',
         left: '260px',
         width: `calc(100% - ${drawerWidth}px)`,
         height: '100vh',

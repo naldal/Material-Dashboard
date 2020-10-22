@@ -7,10 +7,15 @@ const theme = createMuiTheme({
     overrides: {
         MuiChip: {
             sizeSmall: {
-                width: "50px"
+                height: "18px"
             },
             labelSmall: {
                 fontSize: "0.6rem"
+            }
+        },
+        MuiCardHeader: {
+            title: {
+                fontSize: "1rem"
             }
         }
     },
@@ -19,7 +24,8 @@ const theme = createMuiTheme({
             'Nunito',
             'sans-serif'
         ].join(',')
-    }
+    },
+
 })
 
 function App() {

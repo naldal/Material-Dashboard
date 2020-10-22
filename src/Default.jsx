@@ -1,12 +1,53 @@
 import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import DefaultData from './DefaultData.json';
-import axios from 'axios';
-import {Grid} from "@material-ui/core";
+import {CardHeader, Grid} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
+import IconButton from "@material-ui/core/IconButton";
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Line } from 'react-chartjs-2';
+
+const doubleLineState = {
+    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets:[
+            {
+                fill: false,
+                lineTension: 0.5,
+                backgroundColor: 'rgba(116, 185, 255, 1.0)',
+                borderColor: 'rgb(116, 185, 255)',
+                borderWidth: 1,
+                data: [2115, 1562, 1584, 1892, 1587, 1923, 2566, 2448, 2805, 3428, 2917, 3327],
+            },
+            {
+                fill: false,
+                lineTension: 0.5,
+                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                borderColor: 'rgba(0, 0, 0, 0.2)',
+                borderCapStyle: 'dotted',
+                borderWidth: 1,
+                data: [985, 724, 629, 883, 900, 1214, 1476, 1212, 1554, 2128, 1446, 1827],
+            }
+        ],
+}
+
+const doubleLineOptions = {
+    title: {
+        display: false
+    },
+    legend: {
+        display: false
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                display: false
+            }
+        }]
+    }
+}
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -33,8 +74,8 @@ const useStyle = makeStyles((theme) => ({
         fontWeight: "600",
         color: theme.palette.error.main
     },
-    cardContent: {
-
+    chartCard: {
+        margin: "0.5rem",
 
     }
 }))
@@ -83,9 +124,67 @@ const Default = () => {
 
     return (
         <div>
-            <Grid container spacing={2} className={classes.gridContainer}>
+            <Grid container spacing={0} className={classes.gridContainer}>
                 {getSaleData}
             </Grid>
+            <Grid container spacing={0}>
+                <Grid item lg={8} xs={12}>
+                    <Card className={classes.chartCard} elevation={0}>
+                        <CardHeader title="Total revenue" action={
+                            <IconButton aria-label="settings">
+                                <MoreVertIcon />
+                            </IconButton>
+                        }/>
+                        <CardContent>
+                            <div>
+                                <Line data={doubleLineState} options={doubleLineOptions}/>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item lg={4} xs={12}>
+                    <Card className={classes.chartCard} elevation={0}>
+                        <CardHeader title="Weekly sales" action={
+                            <IconButton aria-label="settings">
+                                <MoreVertIcon />
+                            </IconButton>
+                        }/>
+                        <CardContent>
+
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+
+            <Grid container spacing={0}>
+                <Grid item lg={4} xs={12}>
+                    <Card className={classes.chartCard} elevation={0}>
+                        <CardHeader title="Mobile / Desktop" action={
+                            <IconButton aria-label="settings">
+                                <MoreVertIcon />
+                            </IconButton>
+                        }/>
+                        <CardContent>
+
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item lg={8} xs={12}>
+                    <Card className={classes.chartCard} elevation={0}>
+                        <CardHeader title="Latest projects" action={
+                            <IconButton aria-label="settings">
+                                <MoreVertIcon />
+                            </IconButton>
+                        }/>
+                        <CardContent>
+
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+            <div>
+
+            </div>
         </div>
     );
 };
