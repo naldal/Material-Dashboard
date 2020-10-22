@@ -10,15 +10,25 @@ import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Line } from 'react-chartjs-2';
 
-const doubleLineState = {
-    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-        datasets:[
+const doubleLineState = (canvas) => {
+    const ctx = canvas.getContext("2d");
+    const gradient = ctx.createLinearGradient(0, 0 , 300 ,0);
+    gradient.addColorStop(0, '#20f08b');
+    gradient.addColorStop(0.5, '#20f08b');
+    gradient.addColorStop(1, '#07dfb1');
+
+    return {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [
             {
-                fill: false,
+                fill: true,
+
                 lineTension: 0.5,
-                backgroundColor: 'rgba(116, 185, 255, 1.0)',
+                gradientFill: 'rgb(10,12,122)',
+                backgroundColor: gradient,
+                pointBackgroundColor: '#ffffff',
                 borderColor: 'rgb(116, 185, 255)',
-                borderWidth: 1,
+                borderWidth: 2.5,
                 data: [2115, 1562, 1584, 1892, 1587, 1923, 2566, 2448, 2805, 3428, 2917, 3327],
             },
             {
@@ -27,11 +37,17 @@ const doubleLineState = {
                 backgroundColor: 'rgba(0, 0, 0, 0.2)',
                 borderColor: 'rgba(0, 0, 0, 0.2)',
                 borderCapStyle: 'dotted',
-                borderWidth: 1,
+                borderWidth: 2.5,
+                pointBackgroundColor: '#ffffff',
+                borderDash: [3, 3],
                 data: [985, 724, 629, 883, 900, 1214, 1476, 1212, 1554, 2128, 1446, 1827],
             }
         ],
+    }
 }
+
+const canvas = document.createElement('canvas');
+const doubleLinearData = doubleLineState(canvas);
 
 const doubleLineOptions = {
     title: {
@@ -44,6 +60,11 @@ const doubleLineOptions = {
         xAxes: [{
             gridLines: {
                 display: false
+            }
+        }],
+        yAxes: [{
+            gridLines:{
+                lineWidth: 0.5
             }
         }]
     }
@@ -137,7 +158,7 @@ const Default = () => {
                         }/>
                         <CardContent>
                             <div>
-                                <Line data={doubleLineState} options={doubleLineOptions}/>
+                                <Line data={doubleLinearData} options={doubleLineOptions}/>
                             </div>
                         </CardContent>
                     </Card>
