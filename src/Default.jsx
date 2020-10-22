@@ -251,7 +251,11 @@ const Default = () => {
                                                     {row.subject}
                                                 </TableCell>
                                                 <TableCell align={"right"} style={{padding:"8px"}}>{row.revenue}</TableCell>
-                                                <TableCell align={"right"} style={{padding:"8px"}}>{row.value}</TableCell>
+                                                {
+                                                    `${row.value}`.charAt(0) === '+' ? <TableCell align={"right"} style={{padding:"8px", color: "green"}}>{row.value}</TableCell> :
+                                                        <TableCell align={"right"} style={{padding:"8px",color: "red"}}>{row.value}</TableCell>
+                                                }
+
                                             </TableRow>
                                         ))}
                                     </TableBody>
