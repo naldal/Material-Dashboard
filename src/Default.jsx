@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Line, Doughnut, Pie } from 'react-chartjs-2';
+import {Line, Doughnut, Pie, Bar} from 'react-chartjs-2';
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
@@ -71,19 +71,53 @@ const doughnutState = (canvas) => {
     }
 }
 
+const compareBarState = (canvas) => {
+    return {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [
+            {
+                data: [54,67,41,55,62,45,55,73,60,76,48,79],
+                label: 'mobile',
+                fill: true,
+                backgroundColor: 'rgb(116, 185, 255)',
+                barThickness: 5
+
+            },
+            {
+                data: [69,66,24,48,52,51,44,53,62,79,51,68],
+                label: 'desktop',
+                barThickness: 5
+            }
+        ]
+    }
+}
+
 const createData = (subject, revenue, value) => {
     return {subject, revenue, value}
 }
+const createProjectsData = (project, start, end, state, assign) => {
+    return {project, start, end, state, assign}
+}
+
 const tableRows = [
     createData('Social', 260, "+35%"),
     createData('Search Engines', 125, "-12%"),
     createData('Direct', 54, "+46%"),
     createData('Other', 146, "+35%")
 ]
+const projectRows = [
+    createProjectsData('Project Aurora', '01/01/2020', '31/06/2020', 'Done', 'James Dalton'),
+    createProjectsData('Project Eagle', '01/01/2020', '31/06/2020', 'In Progress', 'Tracy Mack'),
+    createProjectsData('Project Fireball', '01/01/2020', '31/06/2020', 'Done', 'Sallie Love'),
+    createProjectsData('Project Omega', '01/01/2020', '31/06/2020', 'Cancelled', 'Glenda Jang'),
+    createProjectsData('Project Yoda', '01/01/2020', '31/06/2020', 'Done', 'Raymond Ennis'),
+    createProjectsData('Project Zulu', '01/01/2020', '31/06/2020', 'Done', 'Matthew Winters'),
+]
 
 const canvas = document.createElement('canvas');
 const doubleLinearData = doubleLineState(canvas);
 const doughnutData = doughnutState(canvas)
+const compareBarData = compareBarState(canvas);
 
 const doubleLineOptions = {
     title: {
@@ -117,7 +151,39 @@ const doughnutOptions = {
     cutoutPercentage: 85
 }
 
+const compareBarOptions = {
+    title: {
+        display: false
+    },
+    legend: {
+        display: false
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                display: false
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                display: false
+            },
+            ticks: {
+                beginAtZero: false,
+                max: 79,
+                min: 20,
+                stepSize: 20
+            }
+        }]
+    }
+}
+
+
+
 const useStyle = makeStyles((theme) => ({
+    holdBottom: {
+        marginBottom: "25px"
+    },
     root: {
         margin: "8px",
     },
@@ -201,12 +267,12 @@ const Default = () => {
     );
 
     return (
-        <div>
+        <div className={classes.holdBottom}>
             <Grid container spacing={0} className={classes.gridContainer}>
                 {getSaleData}
             </Grid>
             <Grid container spacing={0}>
-                <Grid item lg={8} xs={12}>
+                <Grid item lg={8} md={12}>
                     <Card className={classes.chartCard} elevation={0}>
                         <CardHeader title="Total revenue" action={
                             <IconButton aria-label="settings">
@@ -220,7 +286,7 @@ const Default = () => {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item lg={4} xs={12}>
+                <Grid item lg={4} md={12}>
                     <Card className={classes.chartCard} elevation={0}>
                         <CardHeader title="Weekly sales" action={
                             <IconButton aria-label="settings">
@@ -276,19 +342,54 @@ const Default = () => {
                             </IconButton>
                         }/>
                         <CardContent>
-
+                            <div>
+                                <Bar data={compareBarData} options={compareBarOptions} height={200}/>
+                            </div>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item lg={8} xs={12}>
+                <Grid item lg={8} xs={12} style={{height:"200px"}}>
                     <Card className={classes.chartCard} elevation={0}>
                         <CardHeader title="Latest projects" action={
                             <IconButton aria-label="settings">
                                 <MoreVertIcon />
                             </IconButton>
                         }/>
-                        <CardContent>
-
+                        <CardContent >
+                            <TableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>Start Date</TableCell>
+                                            <TableCell>End Date</TableCell>
+                                            <TableCell>State</TableCell>
+                                            <TableCell>Assignee</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {projectRows.map((row)=> (
+                                            <TableRow key={row.project}>
+                                                <TableCell component="th" scope="row">
+                                                    {row.project}
+                                                </TableCell>
+                                                <TableCell component="th" scope="row">
+                                                    {row.start}
+                                                </TableCell>
+                                                <TableCell component="th" scope="row">
+                                                    {row.end}
+                                                </TableCell>
+                                                <TableCell component="th" scope="row">
+                                                    {row.state}
+                                                </TableCell>
+                                                <TableCell component="th" scope="row">
+                                                    {row.assign}
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
                         </CardContent>
                     </Card>
                 </Grid>
